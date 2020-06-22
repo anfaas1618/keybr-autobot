@@ -19,7 +19,10 @@ public class rock
 
         SafariDriver driver = new SafariDriver(options);
 
-        driver.get("https://www.facebook.com");
+        driver.get("https://www.keybr.com");
+
+        driver.findElementByXPath("/html/body/div[2]/div/div[2]/div/a").click();
+        driver.findElementByXPath("//*[@id=\"root\"]/section/div[3]/div/div[3]").click();
 
 
     }
