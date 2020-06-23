@@ -25,11 +25,11 @@ public class rock
 
         List<String> list=new ArrayList<String>();
 
-//        SafariOptions options = new SafariOptions();
-//
-//        SafariDriver driver = new SafariDriver(options);
-        System.setProperty("webdriver.gecko.driver", "C:\\Users\\DRAKH\\OneDrive\\Desktop\\geckodriver.exe");
-        FirefoxDriver driver =new FirefoxDriver();
+        SafariOptions options = new SafariOptions();
+
+        SafariDriver driver = new SafariDriver(options);
+//        System.setProperty("webdriver.gecko.driver", "C:\\Users\\DRAKH\\OneDrive\\Desktop\\geckodriver.exe");
+//        FirefoxDriver driver =new FirefoxDriver();
 
         driver.get("https://www.keybr.com");
         driver.findElementByXPath("/html/body/div[2]/div/div[2]/div/a").click();
@@ -55,13 +55,19 @@ int x=0;
         driver.findElementByXPath("//*[@id=\"root\"]/section/div[3]/div/div[3]").click();
 //        driver.findElementByXPath("//*[@id=\"root\"]/section/div[3]/div")
 //                .sendKeys(firstkey[0]);
-                        for (String letter :list)
-if (letter.contains("␣"))
-        driver.findElementByXPath("//*[@id=\"root\"]/section/div[3]/div")
-                .sendKeys(Keys.SPACE);
-else
-    driver.findElementByXPath("//*[@id=\"root\"]/section/div[3]/div")
-            .sendKeys(letter);
+                        for (String letter :list) {
+                            if (letter.contains("␣"))
+                                driver.findElementByXPath("//*[@id=\"root\"]/section/div[3]/div")
+                                        .sendKeys(Keys.SPACE);
+                            else
+                                driver.findElementByXPath("//*[@id=\"root\"]/section/div[3]/div")
+                                        .sendKeys(letter);
+                            try {
+                                Thread.sleep(50);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
 
     }
 
